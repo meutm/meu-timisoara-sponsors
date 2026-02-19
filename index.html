@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devino Partener — Model European Union Timișoara 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eu-blue: #003399;
+    --eu-blue-deep: #001f6b;
+    --eu-blue-light: #0041c2;
+    --eu-gold: #FFCC00;
+    --white: #FFFFFF;
+    --off-white: #F5F7FF;
+    --text-dark: #0a0e2c;
+    --text-muted: #5a6284;
+    --border: rgba(0,51,153,0.12);
+    --card-shadow: 0 20px 60px rgba(0,51,153,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; color:var(--text-dark); background:var(--white); overflow-x:hidden; }
+
+  /* NAV */
+  .hero-nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:18px 60px; background:rgba(0,15,60,0.9); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,204,0,0.14); }
+  .nav-logo { display:flex; align-items:center; gap:14px; }
+  /* NAV LOGO — src="SEU_LOGO.png" versiune albă/inversată, h max 36px */
+  .nav-logo-img { height:70px; width:auto; display:block; }
+  .nav-logo-text { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:600; color:var(--white); letter-spacing:1px; text-transform:uppercase; }
+  .nav-links { display:flex; gap:32px; align-items:center; }
+  .nav-links a { color:rgba(255,255,255,0.68); text-decoration:none; font-size:13px; font-weight:500; letter-spacing:.5px; transition:color .2s; text-transform:uppercase; }
+  .nav-links a:hover { color:var(--eu-gold); }
+  .nav-cta { background:var(--eu-gold) !important; color:var(--eu-blue-deep) !important; font-weight:600 !important; padding:9px 22px; border-radius:3px; }
+  .nav-cta:hover { background:#fff !important; }
+
+  /* HERO */
+  .hero { min-height:100vh; background:var(--eu-blue-deep); position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
+  .stars-ring { position:absolute; width:520px; height:520px; top:50%; left:50%; transform:translate(-50%,-50%); animation:rotateRing 60s linear infinite; opacity:.14; pointer-events:none; }
+  @keyframes rotateRing { to { transform:translate(-50%,-50%) rotate(360deg); } }
+  .hero-bg-text { position:absolute; font-family:'Cormorant Garamond',serif; font-size:clamp(100px,18vw,200px); font-weight:700; color:rgba(255,204,0,0.04); letter-spacing:-4px; user-select:none; white-space:nowrap; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+  .hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,204,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,204,0,0.03) 1px,transparent 1px); background-size:60px 60px; }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:180px; background:linear-gradient(transparent,var(--eu-blue-deep)); }
+  .hero-content { position:relative; z-index:10; text-align:center; padding:140px 40px 60px; max-width:900px; }
+  .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(255,204,0,0.09); border:1px solid rgba(255,204,0,0.26); color:var(--eu-gold); font-size:11px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; padding:8px 18px; border-radius:2px; margin-bottom:36px; animation:fadeUp .8s ease both; }
+  .hero-eyebrow svg { width:12px; height:12px; stroke:var(--eu-gold); fill:none; }
+  .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(48px,7vw,88px); font-weight:300; color:var(--white); line-height:1.05; letter-spacing:-1px; margin-bottom:14px; animation:fadeUp .8s ease .1s both; }
+  .hero-title strong { font-weight:700; color:var(--eu-gold); display:block; }
+  .hero-subtitle { font-size:17px; font-weight:300; color:rgba(255,255,255,.6); line-height:1.75; max-width:580px; margin:0 auto 48px; animation:fadeUp .8s ease .2s both; }
+  .hero-cta-group { display:flex; gap:16px; justify-content:center; animation:fadeUp .8s ease .3s both; }
+  .btn-primary { background:var(--eu-gold); color:var(--eu-blue-deep); font-size:14px; font-weight:600; padding:16px 36px; border-radius:3px; text-decoration:none; border:2px solid var(--eu-gold); transition:all .25s; }
+  .btn-primary:hover { background:transparent; color:var(--eu-gold); transform:translateY(-2px); }
+  .btn-outline { background:transparent; color:rgba(255,255,255,.82); font-size:14px; font-weight:500; padding:16px 36px; border-radius:3px; text-decoration:none; border:2px solid rgba(255,255,255,.2); transition:all .25s; }
+  .btn-outline:hover { border-color:rgba(255,255,255,.7); color:var(--white); transform:translateY(-2px); }
+  .hero-stats { position:relative; z-index:10; display:flex; justify-content:center; border-top:1px solid rgba(255,204,0,0.12); animation:fadeUp .8s ease .4s both; width:100%; max-width:800px; }
+  .hero-stat { flex:1; padding:34px 36px; text-align:center; border-right:1px solid rgba(255,204,0,0.1); }
+  .hero-stat:last-child { border-right:none; }
+  .hero-stat-num { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:700; color:var(--eu-gold); line-height:1; display:block; }
+  .hero-stat-label { font-size:11px; color:rgba(255,255,255,.4); letter-spacing:1px; text-transform:uppercase; margin-top:6px; display:block; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+  /* SECTION */
+  .section { padding:100px 60px; max-width:1200px; margin:0 auto; }
+  .section-eyebrow { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--eu-blue); margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .section-eyebrow::before { content:''; width:32px; height:2px; background:var(--eu-gold); display:block; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4vw,56px); font-weight:600; color:var(--text-dark); line-height:1.1; margin-bottom:20px; letter-spacing:-.5px; }
+  .section-desc { font-size:16px; color:var(--text-muted); line-height:1.8; max-width:620px; }
+
+  /* ABOUT */
+  .about-strip { background:var(--off-white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .about-visual { position:relative; height:460px; }
+  .about-img-main { width:100%; height:100%; border-radius:4px; overflow:hidden; background:linear-gradient(135deg,var(--eu-blue-deep),var(--eu-blue-light)); }
+  /* ── IMAGINE PRINCIPALĂ: înlocuiește src="" cu calea spre fișier, ex: src="images/sala.jpg" ── */
+  .about-img-main img { width:100%; height:100%; object-fit:cover; display:block; }
+  .about-badge { position:absolute; bottom:-20px; right:-20px; background:var(--eu-gold); color:var(--eu-blue-deep); padding:20px 24px; border-radius:3px; font-family:'Cormorant Garamond',serif; font-weight:700; text-align:center; box-shadow:0 12px 40px rgba(0,51,153,.2); }
+  .about-badge strong { font-size:32px; display:block; line-height:1; }
+  .about-badge span { font-size:12px; font-family:'DM Sans',sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:1px; }
+  .about-text h2 { margin-bottom:24px; }
+  .about-pillars { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:36px; }
+  .pillar { padding:20px; border:1px solid var(--border); border-radius:4px; background:var(--white); transition:all .2s; }
+  .pillar:hover { border-color:var(--eu-blue); box-shadow:var(--card-shadow); transform:translateY(-2px); }
+  .pillar-icon { width:36px; height:36px; background:rgba(0,51,153,.07); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .pillar-icon svg { width:18px; height:18px; stroke:var(--eu-blue); fill:none; }
+  .pillar h4 { font-size:14px; font-weight:600; margin-bottom:5px; }
+  .pillar p { font-size:12px; color:var(--text-muted); line-height:1.6; }
+
+  /* PATRONAGE */
+  .patronage-strip { background:var(--eu-blue-deep); padding:56px 60px; }
+  .patronage-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+  .patronage-text { color:var(--white); font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; line-height:1.5; max-width:460px; }
+  .patronage-text em { color:var(--eu-gold); font-style:normal; font-weight:600; }
+  .patronage-logos { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  /* ── LOGO SLOT: pune <img src="logo.png"> înăuntru; fallback = text label ── */
+  .partner-logo-slot { width:160px; height:90px; border:1px solid rgba(255,204,0,0.2); border-radius:3px; display:flex; align-items:center; justify-content:center; padding:10px 14px; transition:border-color .2s; overflow:hidden; }
+  .partner-logo-slot:hover { border-color:rgba(255,204,0,.55); }
+  .partner-logo-slot img { max-width:200%; max-height:150%; object-fit:contain; display:block; }
+  .logo-label { display:none; font-size:11px; letter-spacing:.8px; text-transform:uppercase; color:rgba(255,255,255,.45); text-align:center; line-height:1.5; }
+  .logo-label strong { display:block; font-size:13px; color:rgba(255,255,255,.75); margin-bottom:3px; }
+
+  /* PACKAGES */
+  .packages-section { background:var(--white); }
+  .packages-header { text-align:center; margin-bottom:64px; }
+  .packages-header .section-eyebrow { justify-content:center; }
+  .packages-header .section-eyebrow::before { display:none; }
+  .packages-header .section-desc { margin:0 auto; text-align:center; }
+  .packages-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:900px; margin:0 auto; }
+  .package-card { border:2px solid var(--border); border-radius:6px; overflow:hidden; transition:all .3s; background:var(--white); position:relative; }
+  .package-card:hover { transform:translateY(-6px); box-shadow:0 32px 80px rgba(0,51,153,.12); border-color:var(--eu-blue); }
+  .package-card.featured { border-color:var(--eu-blue); box-shadow:0 24px 60px rgba(0,51,153,.14); }
+  .package-badge { position:absolute; top:20px; right:20px; background:var(--eu-gold); color:var(--eu-blue-deep); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 10px; border-radius:2px; }
+  .package-header { background:var(--eu-blue); padding:32px 32px 28px; color:var(--white); }
+  .package-card.featured .package-header { background:linear-gradient(135deg,var(--eu-blue-deep),var(--eu-blue)); }
+  .package-name { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:8px; }
+  .package-price { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:700; color:var(--eu-gold); line-height:1; margin-bottom:8px; }
+  .package-price span { font-size:22px; font-weight:400; color:rgba(255,255,255,.6); }
+  .package-tagline { font-size:13px; color:rgba(255,255,255,.62); line-height:1.55; }
+  .package-body { padding:28px 32px 32px; }
+  .pkg-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--eu-blue); margin:22px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+  .pkg-label:first-child { margin-top:0; }
+  .pkg-label svg { width:13px; height:13px; stroke:var(--eu-blue); fill:none; flex-shrink:0; }
+  .benefit-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .benefit-list li { display:flex; align-items:flex-start; gap:9px; font-size:13.5px; color:var(--text-dark); line-height:1.5; }
+  .benefit-list li svg { width:13px; height:13px; stroke:var(--eu-blue); fill:none; flex-shrink:0; margin-top:3px; }
+  .package-cta { display:block; text-align:center; margin-top:28px; padding:14px; background:var(--eu-blue); color:var(--white); text-decoration:none; font-size:14px; font-weight:600; border-radius:3px; transition:all .2s; border:2px solid var(--eu-blue); }
+  .package-card.featured .package-cta { background:var(--eu-gold); color:var(--eu-blue-deep); border-color:var(--eu-gold); }
+  .package-cta:hover { background:var(--eu-blue-deep); border-color:var(--eu-blue-deep); color:var(--white); }
+  .package-card.featured .package-cta:hover { background:var(--eu-blue-deep); border-color:var(--eu-blue-deep); color:var(--white); }
+  .package-unique-card { grid-column:1/-1; border:2px solid var(--eu-gold); border-radius:6px; padding:36px 40px; background:linear-gradient(to right,var(--eu-blue-deep),var(--eu-blue)); color:var(--white); display:flex; justify-content:space-between; align-items:center; gap:40px; }
+  .unique-text .package-name { color:rgba(255,255,255,.5); margin-bottom:8px; }
+  .unique-text h3 { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; margin-bottom:10px; }
+  .unique-text p { font-size:14px; color:rgba(255,255,255,.62); line-height:1.7; max-width:480px; }
+  .unique-price { text-align:center; flex-shrink:0; }
+  .unique-price .package-price { font-size:64px; }
+  .unique-price .package-price span { color:rgba(255,255,255,.5); }
+  .unique-price a { display:inline-block; margin-top:16px; padding:14px 32px; background:var(--eu-gold); color:var(--eu-blue-deep); text-decoration:none; font-weight:700; font-size:14px; border-radius:3px; transition:all .2s; border:2px solid var(--eu-gold); }
+  .unique-price a:hover { background:transparent; color:var(--eu-gold); }
+
+  /* BENEFITS */
+  .benefits-section { background:var(--off-white); }
+  .benefits-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:56px; }
+  .benefits-col { background:var(--white); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .benefits-col-header { padding:22px 28px; display:flex; align-items:center; gap:14px; }
+  .benefits-col.online .benefits-col-header { background:var(--eu-blue-deep); }
+  .benefits-col.offline .benefits-col-header { background:var(--eu-blue); }
+  .benefits-col-header h3 { font-size:16px; font-weight:600; color:var(--white); }
+  .col-icon { width:38px; height:38px; background:rgba(255,204,0,.16); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .col-icon svg { width:18px; height:18px; stroke:var(--eu-gold); fill:none; }
+  .benefits-list-full { padding:18px 24px 24px; display:flex; flex-direction:column; gap:2px; }
+  .benefit-item { display:flex; align-items:flex-start; gap:12px; padding:10px 12px; border-radius:4px; border:1px solid transparent; transition:all .2s; }
+  .benefit-item:hover { background:var(--off-white); border-color:var(--border); }
+  .benefit-icon { width:30px; height:30px; background:rgba(0,51,153,.06); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .benefit-icon svg { width:14px; height:14px; stroke:var(--eu-blue); fill:none; }
+  .benefit-item-text { font-size:13.5px; color:var(--text-dark); line-height:1.55; padding-top:5px; }
+
+  /* VISIBILITY */
+  .visibility-section { background:var(--white); }
+  .visibility-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+  .vis-card { border:1px solid var(--border); border-radius:6px; padding:32px 28px; transition:all .25s; position:relative; overflow:hidden; }
+  .vis-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--eu-blue); transform:scaleX(0); transition:transform .25s; }
+  .vis-card:hover::after { transform:scaleX(1); }
+  .vis-card:hover { border-color:var(--eu-blue); box-shadow:var(--card-shadow); transform:translateY(-3px); }
+  .vis-icon { width:44px; height:44px; background:rgba(0,51,153,.07); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+  .vis-icon svg { width:20px; height:20px; stroke:var(--eu-blue); fill:none; }
+  .vis-card h3 { font-size:17px; font-weight:600; margin-bottom:10px; }
+  .vis-card p { font-size:14px; color:var(--text-muted); line-height:1.7; }
+
+  /* GALLERY */
+  .gallery-section { background:var(--off-white); }
+  .gallery-grid { display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:240px 240px; gap:12px; margin-top:48px; border-radius:6px; overflow:hidden; }
+  .gallery-item { background:#d6ddf0; position:relative; overflow:hidden; border-radius:4px; }
+  .gallery-item:first-child { grid-row:span 2; }
+  /* ── IMAGINE GALERIE: înlocuiește src="" cu calea spre fișier, ex: src="images/icam.jpg" ── */
+  .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .gallery-item:hover img { transform:scale(1.04); }
+  .gallery-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,20,80,.65)); color:var(--white); padding:24px 16px 14px; font-size:12px; letter-spacing:.5px; pointer-events:none; }
+
+  /* TIMELINE */
+  .timeline-section { background:var(--eu-blue-deep); }
+  .timeline-section .section-eyebrow { color:var(--eu-gold); }
+  .timeline-section .section-eyebrow::before { background:var(--eu-gold); }
+  .timeline-section .section-title { color:var(--white); }
+  .timeline-section .section-desc { color:rgba(255,255,255,.5); }
+  .timeline { display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:64px; position:relative; }
+  .timeline::before { content:''; position:absolute; top:27px; left:10%; right:10%; height:1px; background:rgba(255,204,0,.18); }
+  .timeline-step { text-align:center; padding:0 16px; position:relative; }
+  .timeline-dot { width:54px; height:54px; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,204,0,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; position:relative; z-index:1; transition:all .2s; }
+  .timeline-dot svg { width:22px; height:22px; stroke:var(--eu-gold); fill:none; }
+  .timeline-step:hover .timeline-dot { background:var(--eu-gold); border-color:var(--eu-gold); }
+  .timeline-step:hover .timeline-dot svg { stroke:var(--eu-blue-deep); }
+  .timeline-date { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:600; color:var(--eu-gold); margin-bottom:6px; }
+  .timeline-label { font-size:12px; color:rgba(255,255,255,.52); line-height:1.55; }
+
+  /* CONTACT */
+  .contact-section { background:var(--white); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .contact-form { display:flex; flex-direction:column; gap:20px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { display:flex; flex-direction:column; gap:7px; }
+  label { font-size:11px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; color:var(--text-muted); }
+  input,select,textarea { padding:13px 16px; border:1.5px solid var(--border); border-radius:3px; font-size:14px; font-family:'DM Sans',sans-serif; color:var(--text-dark); background:var(--white); transition:all .2s; outline:none; -webkit-appearance:none; }
+  input:focus,select:focus,textarea:focus { border-color:var(--eu-blue); box-shadow:0 0 0 3px rgba(0,51,153,.07); }
+  textarea { resize:vertical; min-height:120px; }
+  .form-submit { background:var(--eu-blue); color:var(--white); padding:16px 40px; border:2px solid var(--eu-blue); border-radius:3px; font-size:14px; font-weight:600; font-family:'DM Sans',sans-serif; cursor:pointer; letter-spacing:.5px; transition:all .2s; text-transform:uppercase; }
+  .form-submit:hover { background:var(--eu-blue-deep); border-color:var(--eu-blue-deep); transform:translateY(-2px); }
+  .form-success { display:none; padding:18px; background:rgba(0,51,153,.05); border:1px solid var(--eu-blue); border-radius:4px; color:var(--eu-blue); font-size:14px; text-align:center; }
+  .contact-info-block { margin-bottom:36px; }
+  .contact-info-block h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; margin-bottom:8px; }
+  .contact-info-block p { font-size:14px; color:var(--text-muted); line-height:1.75; }
+  .contact-person { display:flex; align-items:center; gap:16px; padding:20px; border:1px solid var(--border); border-radius:6px; margin-bottom:14px; transition:all .2s; }
+  .contact-person:hover { border-color:var(--eu-blue); box-shadow:var(--card-shadow); }
+  /* ── FOTO CONTACT: poți înlocui .contact-avatar cu <img src="foto.jpg" class="contact-avatar-img"> ── */
+  .contact-avatar { width:56px; height:56px; background:linear-gradient(135deg,var(--eu-blue-deep),var(--eu-blue)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--eu-gold); flex-shrink:0; }
+  .contact-avatar-img { width:56px; height:56px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+  .contact-person-info strong { display:block; font-size:15px; margin-bottom:2px; }
+  .contact-person-info span { font-size:12px; color:var(--text-muted); }
+  .contact-person-info a { display:block; font-size:13px; color:var(--eu-blue); text-decoration:none; margin-top:4px; font-weight:500; }
+  .budget-box { margin-top:32px; padding:24px; background:var(--off-white); border-radius:6px; border:1px solid var(--border); }
+  .budget-box-label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--eu-blue); margin-bottom:10px; }
+  .budget-box-num { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:700; color:var(--text-dark); line-height:1; }
+  .budget-box-desc { font-size:13px; color:var(--text-muted); margin-top:8px; line-height:1.6; }
+
+  /* FOOTER */
+  .footer { background:var(--eu-blue-deep); padding:50px 60px 30px; }
+  .footer-inner { max-width:1200px; margin:0 auto; }
+  .footer-top { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:36px; border-bottom:1px solid rgba(255,204,0,.1); margin-bottom:24px; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--white); }
+  .footer-logo span { color:var(--eu-gold); }
+  .footer-tagline { font-size:12px; color:rgba(255,255,255,.35); margin-top:6px; letter-spacing:.5px; }
+  .footer-links { display:flex; gap:28px; }
+  .footer-links a { color:rgba(255,255,255,.42); text-decoration:none; font-size:12px; letter-spacing:.5px; text-transform:uppercase; transition:color .2s; }
+  .footer-links a:hover { color:var(--eu-gold); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,.26); font-size:12px; }
+  .eu-stars-deco { display:flex; align-items:center; gap:5px; }
+  .eu-stars-deco svg { width:8px; height:8px; fill:rgba(255,204,0,.45); }
+
+  /* SCROLL TOP */
+  .scroll-top { position:fixed; bottom:36px; right:36px; width:46px; height:46px; background:var(--eu-blue); border-radius:3px; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; transform:translateY(10px); transition:all .3s; z-index:200; border:none; box-shadow:0 8px 30px rgba(0,51,153,.3); }
+  .scroll-top svg { width:18px; height:18px; stroke:var(--white); fill:none; }
+  .scroll-top.visible { opacity:1; transform:none; }
+  .scroll-top:hover { background:var(--eu-gold); }
+  .scroll-top:hover svg { stroke:var(--eu-blue-deep); }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+
+  @media(max-width:900px) {
+    .section { padding:70px 24px; }
+    .hero-stats { flex-wrap:wrap; }
+    .hero-stat { border-right:none; border-bottom:1px solid rgba(255,204,0,.1); }
+    .about-grid,.contact-grid,.benefits-grid { grid-template-columns:1fr; gap:40px; }
+    .about-visual { height:280px; }
+    .about-badge { display:none; }
+    .packages-grid { grid-template-columns:1fr; }
+    .package-unique-card { flex-direction:column; }
+    .visibility-grid { grid-template-columns:1fr 1fr; }
+    .timeline { grid-template-columns:1fr 1fr; gap:24px; }
+    .timeline::before { display:none; }
+    .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+    .gallery-item { height:200px; }
+    .gallery-item:first-child { grid-row:unset; }
+    .nav-links { display:none; }
+    .hero-nav { padding:16px 24px; }
+    .patronage-inner { flex-direction:column; text-align:center; }
+    .patronage-logos { justify-content:center; }
+    .footer-top { flex-direction:column; gap:24px; }
+    .form-row { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAV
+     → Înlocuiește src="" cu logo-ul tău (versiune albă)
+═══════════════════════════════════════ -->
+<nav class="hero-nav">
+  <div class="nav-logo">
+    <img class="nav-logo-img" src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\MEU.png" alt="MEU Timișoara">
+    <!-- Dacă nu ai logo încă, șterge img-ul de sus și decomentează linia de jos: -->
+    <!-- <span class="nav-logo-text">MEU Timișoara 2026</span> -->
+  </div>
+  <div class="nav-links">
+    <a href="#despre">Despre</a>
+    <a href="#pachete">Pachete</a>
+    <a href="#beneficii">Beneficii</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact" class="nav-cta">Devino Partener</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-text">MEU</div>
+  <div class="stars-ring">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="258,10 261,19 271,19 263,25 266,34 258,28 250,34 253,25 245,19 255,19" fill="#FFCC00"/>
+      <polygon points="370,50 373,59 383,59 375,65 378,74 370,68 362,74 365,65 357,59 367,59" fill="#FFCC00"/>
+      <polygon points="450,150 453,159 463,159 455,165 458,174 450,168 442,174 445,165 437,159 447,159" fill="#FFCC00"/>
+      <polygon points="465,265 468,274 478,274 470,280 473,289 465,283 457,289 460,280 452,274 462,274" fill="#FFCC00"/>
+      <polygon points="415,375 418,384 428,384 420,390 423,399 415,393 407,399 410,390 402,384 412,384" fill="#FFCC00"/>
+      <polygon points="320,455 323,464 333,464 325,470 328,479 320,473 312,479 315,470 307,464 317,464" fill="#FFCC00"/>
+      <polygon points="200,485 203,494 213,494 205,500 208,509 200,503 192,509 195,500 187,494 197,494" fill="#FFCC00"/>
+      <polygon points="88,445 91,454 101,454 93,460 96,469 88,463 80,469 83,460 75,454 85,454" fill="#FFCC00"/>
+      <polygon points="26,352 29,361 39,361 31,367 34,376 26,370 18,376 21,367 13,361 23,361" fill="#FFCC00"/>
+      <polygon points="18,237 21,246 31,246 23,252 26,261 18,255 10,261 13,252 5,246 15,246" fill="#FFCC00"/>
+      <polygon points="65,133 68,142 78,142 70,148 73,157 65,151 57,157 60,148 52,142 62,142" fill="#FFCC00"/>
+      <polygon points="158,53 161,62 171,62 163,68 166,77 158,71 150,77 153,68 145,62 155,62" fill="#FFCC00"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <svg viewBox="0 0 24 24" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Sub Înaltul Patronaj al Parlamentului European
+    </div>
+    <h1 class="hero-title">Investește în <strong>generația europeană</strong></h1>
+    <p class="hero-subtitle">Model European Union Timișoara 2026 reunește 70 de tineri din 15 țări pentru o simulare legislativă unică — și oferă partenerilor o platformă excepțională de vizibilitate.</p>
+    <div class="hero-cta-group">
+      <a href="#pachete" class="btn-primary">Vezi pachetele de sponsorizare</a>
+      <a href="#despre" class="btn-outline">Descoperă evenimentul</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num counter" data-target="70">0</span><span class="hero-stat-label">Participanți</span></div>
+    <div class="hero-stat"><span class="hero-stat-num counter" data-target="15">0</span><span class="hero-stat-label">Țări reprezentate</span></div>
+    <div class="hero-stat"><span class="hero-stat-num counter" data-target="5">0</span><span class="hero-stat-label">Zile de eveniment</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" style="font-size:34px;letter-spacing:-.5px">25–29 mar.</span><span class="hero-stat-label">2026</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+     → Înlocuiește src="" cu imaginea principală
+       ex: src="images/sala-conferinte.jpg"
+═══════════════════════════════════════ -->
+<section class="about-strip" id="despre">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img-main">
+          <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\MEU.png" alt="Model European Union Timișoara 2026">
+        </div>
+        <div class="about-badge"><strong>2026</strong><span>Prima ediție</span></div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">Despre eveniment</div>
+        <h2 class="section-title">Democrație europeană în inima Timișoarei</h2>
+        <p class="section-desc">Model European Union Timișoara este prima conferință de tip MEU din România la această anvergură. Timp de 5 zile, studenți din întreaga Europă vor simula procesul legislativ al Uniunii Europene, devenind europarlamentari și miniștri în Consiliu.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <h4>Educație prin practică</h4><p>Simulare completă a procesului legislativ UE</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <h4>Impact internațional</h4><p>15 țări, o singură voce europeană</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+            <h4>Locație de excepție</h4><p>UVT & ICAM — cele mai moderne spații</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <h4>Patronaj European</h4><p>Susținut de Parlamentul European</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     LOGO-URI PARTENERI
+     → Înlocuiește src="" din fiecare <img> cu calea logo-ului
+       Recomandat: fișiere PNG sau SVG, fundal transparent, versiune albă
+       ex: src="logos/parlamentul-european.png"
+═══════════════════════════════════════ -->
+<div class="patronage-strip">
+  <div class="patronage-inner">
+    <p class="patronage-text">Un eveniment <em>unic în România</em>, susținut de cele mai importante instituții europene și locale.</p>
+    <div class="patronage-logos">
+
+      <div class="partner-logo-slot">
+        <!-- LOGO 1 — Parlamentul European -->
+        <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\PARLAMENT-EUROPEAN.png" alt="Parlamentul European">
+        <div class="logo-label"><strong>Parlamentul European</strong>Înalt Patronaj</div>
+      </div>
+
+      <div class="partner-logo-slot">
+        <!-- LOGO 2 — Europe Direct Timișoara -->
+        <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\EUROPE-DIRECT.png" alt="Europe Direct Timișoara">
+        <div class="logo-label"><strong>Europe Direct</strong>Timișoara</div>
+      </div>
+
+      <div class="partner-logo-slot">
+        <!-- LOGO 3 — F.I.T.T. -->
+        <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\FITT.png" alt="Fundația Județeană de Tineret Timiș">
+        <div class="logo-label"><strong>F.I.T.T.</strong>Fundația Timiș</div>
+      </div>
+
+      <div class="partner-logo-slot">
+        <!-- LOGO 4 — Erasmus+ -->
+        <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\WUT.png" alt="Erasmus+">
+        <div class="logo-label"><strong>Universitatea de Vest din Timișoara</strong>Partener oficial</div>
+      </div>
+
+      <!-- Adaugă slot-uri suplimentare după același model dacă ai mai mulți parteneri -->
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PACKAGES ═══════════════════════════════════════ -->
+<section class="packages-section" id="pachete">
+  <div class="section">
+    <div class="packages-header reveal">
+      <div class="section-eyebrow">Pachete de sponsorizare</div>
+      <h2 class="section-title">Alege nivelul de parteneriat</h2>
+      <p class="section-desc">Fiecare pachet poate fi adaptat obiectivelor companiei tale. Suntem deschiși la discuții personalizate.</p>
+    </div>
+    <div class="packages-grid">
+
+      <!-- PACHET VIZIUNE -->
+      <div class="package-card reveal">
+        <div class="package-header">
+          <div class="package-name">Pachet Viziune</div>
+          <div class="package-price">2.500 <span>€</span></div>
+          <div class="package-tagline">Vizibilitate completă online & offline pe durata evenimentului</div>
+        </div>
+        <div class="package-body">
+          <div class="pkg-label"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Online</div>
+          <ul class="benefit-list">
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe pagina de social media și prezentările oficiale</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Postare Instagram + LinkedIn de anunțare parteneriat (MEU × Sponsor + postare dedicată)</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mențiune în toate postările și story-urile evenimentului</li>
+          </ul>
+          <div class="pkg-label"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Offline</div>
+          <ul class="benefit-list">
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe toate materialele printate (afișe, mape, diplome, roll-up)</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Deducere fiscală</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Corner dedicat în locația evenimentului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Menționate în ceremonia de deschidere și închidere</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>4 invitații la ceremonia de deschidere</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Flyere pe durata coffee break-urilor</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Posibilitate vizită la sediul sponsorului sau workshop</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Produs promoțional în Goodie Bags</li>
+          </ul>
+          <a href="#contact" class="package-cta">Vreau acest pachet</a>
+        </div>
+      </div>
+
+      <!-- PACHET PRINCIPAL -->
+      <div class="package-card featured reveal">
+        <div class="package-badge">Recomandat</div>
+        <div class="package-header">
+          <div class="package-name">Pachet Principal</div>
+          <div class="package-price">3.500 <span>€</span></div>
+          <div class="package-tagline">Beneficii complete cu drepturi exclusive pe domeniu de activitate</div>
+        </div>
+        <div class="package-body">
+          <div class="pkg-label"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Online</div>
+          <ul class="benefit-list">
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe pagina de social media al evenimentului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe prezentările oficiale</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Postare Instagram de anunțare parteneriat</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Postare LinkedIn de anunțare + postare dedicată sponsor</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>10 mențiuni în postări pe durata evenimentului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reel cu imaginea sponsorului la finalul evenimentului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe ecranele din sală + holurile facultății</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mențiune în newsletter UVT + newsletter UNITA</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Prezență TVR, Presspectiva</li>
+          </ul>
+          <div class="pkg-label"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Offline</div>
+          <ul class="benefit-list">
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Logo pe toate materialele printate</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Menționate în ceremonia de deschidere</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Deducere fiscală</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Invitație la ceremonia de deschidere</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Posibilitate discurs din partea partenerului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Promovare eveniment la licee din țară prin UVT</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Corner dedicat în locația evenimentului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Flyere pe durata coffee break-urilor</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Posibilitate vizită la sediul sponsorului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Posibilitate workshop din partea partenerului</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Produs promoțional în Goodie Bags</li>
+          </ul>
+          <a href="#contact" class="package-cta">Vreau acest pachet</a>
+        </div>
+      </div>
+
+      <!-- SPONSOR UNIC -->
+      <div class="package-unique-card reveal">
+        <div class="unique-text">
+          <div class="package-name">Ofertă exclusivă</div>
+          <h3>Sponsor Unic al Evenimentului</h3>
+          <p>Dacă o singură companie decide să acopere întregul buget al evenimentului, dobândește statutul de unic sponsor — cu exclusivitate totală și beneficiile cumulate ale ambelor pachete.</p>
+        </div>
+        <div class="unique-price">
+          <div class="package-price">5.000 <span>€</span></div>
+          <a href="#contact">Discutăm exclusivitatea</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ BENEFITS ═══════════════════════════════════════ -->
+<section class="benefits-section" id="beneficii">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">De ce să sponsorizezi</div>
+      <h2 class="section-title">Beneficii complete, impact real</h2>
+      <p class="section-desc">Parteneriat care depășește simpla vizibilitate — construiți punți reale cu viitorii lideri europeni și cu comunitatea academică.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefits-col online reveal">
+        <div class="benefits-col-header">
+          <div class="col-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>Beneficii Online</h3>
+        </div>
+        <div class="benefits-list-full">
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div class="benefit-item-text">Logo pe pagina de social media a evenimentului și pe toate prezentările oficiale</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="benefit-item-text">Postare Instagram + LinkedIn de anunțare a parteneriatului (MEU × Sponsor)</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="benefit-item-text">Postare dedicată sponsorului — cine ești, ce faci, de ce contezi</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><div class="benefit-item-text">10 mențiuni în postări pe durata evenimentului + story-uri continue</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="benefit-item-text">Reel final cu imaginea sponsorului — conținut de înaltă calitate</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="benefit-item-text">Logo pe ecranele din sală și rulaj pe ecranele din holuri</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="benefit-item-text">Mențiune în newsletter-urile UVT și UNITA (mii de abonați)</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="benefit-item-text">Vizibilitate TVR și Presspectiva — presă locală și națională</div></div>
+        </div>
+      </div>
+      <div class="benefits-col offline reveal">
+        <div class="benefits-col-header">
+          <div class="col-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Beneficii Offline</h3>
+        </div>
+        <div class="benefits-list-full">
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div><div class="benefit-item-text">Logo pe toate materialele printate: afișe, mape, diplome, roll-up-uri</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="benefit-item-text">Menționate în ceremonia de deschidere + posibilitate discurs din partea partenerului</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="benefit-item-text">Deducere fiscală pentru suma sponsorizată</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><div class="benefit-item-text">Invitații la ceremonia de deschidere pentru echipa partenerului</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="benefit-item-text">Promovarea companiei la licee din toată țara prin rețeaua UVT</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="benefit-item-text">Corner dedicat în locația evenimentului pe toată durata</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="benefit-item-text">Flyere distribuite la coffee break-uri — contact direct cu participanții</div></div>
+          <div class="benefit-item"><div class="benefit-icon"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></div><div class="benefit-item-text">Produs promoțional în Goodie Bags + posibilitate workshop dedicat</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ VISIBILITY ═══════════════════════════════════════ -->
+<section class="visibility-section">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">Anvergura evenimentului</div>
+      <h2 class="section-title">De ce MEU Timișoara contează</h2>
+    </div>
+    <div class="visibility-grid">
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Patronaj European</h3><p>Primul eveniment de tip MEU din România cu Înaltul Patronaj al Parlamentului European — o premieră la nivel național.</p></div>
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Public premium</h3><p>70 de studenți și absolvenți din domenii precum politică, drept, economie și mediu — viitorii decidenți europeni.</p></div>
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.55a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Acoperire media</h3><p>Prezență confirmată la TVR și Presspectiva, plus newsletter-ele UVT și UNITA cu mii de abonați.</p></div>
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><h3>Locație de prestigiu</h3><p>Universitatea de Vest din Timișoara — ICAM, una dintre cele mai moderne clădiri universitare din România.</p></div>
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Rețea instituțională</h3><p>Parteneriate cu Primăria Timișoara, Consiliul Județean Timiș și Europe Direct — ancorat în ecosistemul local și european.</p></div>
+      <div class="vis-card reveal"><div class="vis-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Erasmus+ partener</h3><p>Statut de eveniment partener Erasmus+ — recunoaștere oficială a calității și impactului educațional.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GALERIE
+     → Înlocuiește fiecare src="" cu calea spre imaginea ta
+       ex: src="images/icam-exterior.jpg"
+═══════════════════════════════════════ -->
+<section class="gallery-section" id="galerie">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">Locația și atmosfera</div>
+      <h2 class="section-title">Spații care inspiră</h2>
+      <p class="section-desc">Evenimentul se desfășoară în incinta Universității de Vest din Timișoara și la Institutul de Cercetări Avansate de Mediu (ICAM).</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\SALA-ICAM.png" alt="Sala de conferințe ICAM"><div class="gallery-label">ICAM — Sala de conferințe</div></div>
+      <div class="gallery-item"><img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\UVT-INTERIOR.png" alt="Holul Universității de Vest"><div class="gallery-label">Holul UVT</div></div>
+      <div class="gallery-item"><img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\UVT-EXTERIOR.png" alt="Universitatea de Vest Timișoara"><div class="gallery-label">Campus UVT</div></div>
+      <div class="gallery-item"><img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\ICAM.png" alt="Clădirea ICAM"><div class="gallery-label">Clădirea ICAM</div></div>
+      <div class="gallery-item"><img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\AULA-MAGNA.jpeg" alt="Atmosfera evenimentului"><div class="gallery-label">Aula Magna - UVT</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ TIMELINE ═══════════════════════════════════════ -->
+<section class="timeline-section">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">Programul evenimentului</div>
+      <h2 class="section-title">5 zile de democrație europeană</h2>
+      <p class="section-desc">25 – 29 Martie 2026 — Universitatea de Vest din Timișoara</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step reveal"><div class="timeline-dot"><svg viewBox="0 0 24 24" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="timeline-date">25 martie</div><div class="timeline-label">Ceremonia de deschidere oficială</div></div>
+      <div class="timeline-step reveal"><div class="timeline-dot"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="timeline-date">26 martie</div><div class="timeline-label">Sesiunile comitetelor & dezbateri</div></div>
+      <div class="timeline-step reveal"><div class="timeline-dot"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="timeline-date">27 martie</div><div class="timeline-label">Negocieri & drafting legislativ</div></div>
+      <div class="timeline-step reveal"><div class="timeline-dot"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="timeline-date">28 martie</div><div class="timeline-label">Plenara generală & vot</div></div>
+      <div class="timeline-step reveal"><div class="timeline-dot"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="timeline-date">29 martie</div><div class="timeline-label">Gală de închidere & awards</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CONTACT ═══════════════════════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="section">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Devino partener</div>
+        <h2 class="section-title">Hai să construim ceva împreună</h2>
+        <p class="section-desc" style="margin-bottom:36px;">Trimite-ne un mesaj și te contactăm în cel mai scurt timp pentru a discuta detaliile parteneriatului.</p>
+        <form class="contact-form" action="https://formspree.io/f/xzdaaepo" method="POST">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">Prenume</label><input type="text" id="fname" name="prenume" placeholder="Ion" required></div>
+            <div class="form-group"><label for="lname">Nume</label><input type="text" id="lname" name="nume" placeholder="Popescu" required></div>
+          </div>
+          <div class="form-group"><label for="company">Companie</label><input type="text" id="company" name="companie" placeholder="Numele companiei" required></div>
+          <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="contact@companie.ro" required></div>
+          <div class="form-group">
+            <label for="package">Pachet de interes</label>
+            <select id="package" name="pachet">
+              <option value="">— Selectează pachetul —</option>
+              <option>Pachet Viziune (2.500 €)</option>
+              <option>Pachet Principal (3.500 €)</option>
+              <option>Sponsor Unic (5.000 €)</option>
+              <option>Discuție personalizată</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Mesaj (opțional)</label><textarea id="message" name="mesaj" placeholder="Spune-ne mai multe despre obiectivele tale..."></textarea></div>
+          <button type="submit" class="form-submit">Trimite cererea de parteneriat</button>
+        </form>
+      </div>
+
+      <div class="reveal">
+        <div class="contact-info-block">
+          <h3>Contact direct</h3>
+          <p>Suntem deschiși să adaptăm pachetele în funcție de obiectivele și direcția companiei tale.</p>
+        </div>
+
+        <!-- CONTACT PERSON 1
+             Opțional: înlocuiește .contact-avatar cu <img src="viorel.jpg" class="contact-avatar-img" alt="Viorel Lambu"> -->
+        <div class="contact-person">
+          <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\vio.png" class="contact-avatar-img">
+          <div class="contact-person-info">
+            <strong>Viorel Lambu</strong>
+            <span>Director General, MEU Timișoara</span>
+            <a href="mailto:viorel.lambu04@e-uvt.ro">viorel.lambu04@e-uvt.ro</a>
+            <a href="tel:+40725580476">+40 725 580 476</a>
+          </div>
+        </div>
+
+        <!-- CONTACT PERSON 2 -->
+        <div class="contact-person">
+          <img src="C:\Users\Andrei\Desktop\site-meu-sponsori\logo\paula.png" class="contact-avatar-img">
+          <div class="contact-person-info">
+            <strong>Paula Iovescu</strong>
+            <span>Project Manager, MEU Timișoara</span>
+            <a href="mailto:paula.iovescu04@e-uvt.ro">paula.iovescu04@e-uvt.ro</a>
+            <a href="tel:+40758148025">+40 758 148 025</a>
+          </div>
+        </div>
+
+        <div class="budget-box">
+          <div class="budget-box-label">Buget total eveniment</div>
+          <div class="budget-box-num">5.000 €</div>
+          <p class="budget-box-desc">Contribuțiile pot fi individuale sau în parteneriat cu alte companii din domenii diferite. Companiile din același domeniu nu vor fi combinate ca parteneri.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Model European Union <span>Timișoara</span></div>
+        <div class="footer-tagline">25 – 29 Martie 2026 · Sub Înaltul Patronaj al Parlamentului European</div>
+      </div>
+      <div class="footer-links">
+        <a href="#despre">Despre</a>
+        <a href="#pachete">Pachete</a>
+        <a href="#beneficii">Beneficii</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Model European Union Timișoara. Toate drepturile rezervate.</div>
+      <div class="eu-stars-deco">
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+        <svg viewBox="0 0 10 10"><polygon points="5,1 6,3.5 9,3.5 6.5,5.5 7.5,8 5,6.5 2.5,8 3.5,5.5 1,3.5 4,3.5"/></svg>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script>
+  // Reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'), i*55); observer.unobserve(e.target); } });
+  }, { threshold:0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Counters
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ const t=parseInt(e.target.dataset.target); let c=0; const s=t/(1400/16); const timer=setInterval(()=>{ c=Math.min(c+s,t); e.target.textContent=Math.floor(c); if(c>=t)clearInterval(timer); },16); cObs.unobserve(e.target); } });
+  }, { threshold:.5 });
+  document.querySelectorAll('.counter').forEach(el => cObs.observe(el));
+
+  // Scroll top
+  window.addEventListener('scroll', () => document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY>500));
+
+  // Active nav
+  const sects = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const pos = window.scrollY+120;
+    sects.forEach(s => { if(pos>=s.offsetTop && pos<s.offsetTop+s.offsetHeight){ links.forEach(l=>{ if(!l.classList.contains('nav-cta'))l.style.color=''; }); const a=document.querySelector(`.nav-links a[href="#${s.id}"]`); if(a&&!a.classList.contains('nav-cta'))a.style.color='#FFCC00'; } });
+  });
+
+  // Form
+  function handleFormSubmit(e){ e.preventDefault(); const btn=e.target.querySelector('.form-submit'); btn.textContent='Se trimite...'; btn.disabled=true; setTimeout(()=>{ btn.style.display='none'; document.getElementById('form-success').style.display='block'; },1000); }
+
+  // Hide broken img tags (empty src)
+  document.querySelectorAll('img').forEach(img => { if(!img.getAttribute('src')) img.style.display='none'; });
+</script>
+</body>
+</html>
