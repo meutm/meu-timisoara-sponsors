@@ -500,7 +500,9 @@
 .nav-mobile-menu a { color:rgba(255,255,255,.75); text-decoration:none; font-size:28px; font-weight:400; letter-spacing:2px; text-transform:uppercase; transition:color .2s; font-family:'Cormorant Garamond',serif; }
 .nav-mobile-menu a:hover { color:var(--eu-gold); }
 .nav-mobile-menu .nav-cta-mobile { background:var(--eu-gold); color:var(--eu-blue-deep) !important; font-weight:700; padding:14px 40px; border-radius:3px; font-family:'DM Sans',sans-serif !important; font-size:14px !important; letter-spacing:1px; margin-top:16px; }
-
+.nav-mobile-close { background:none; border:none; color:rgba(255,255,255,.5); font-size:28px; cursor:pointer; position:absolute; top:24px; right:28px; transition:color .2s; }
+.nav-mobile-close:hover { color:var(--eu-gold); }
+  
 @media(max-width:900px) {
   .nav-hamburger { display:flex; }
   .nav-links { display:none; }
@@ -530,6 +532,7 @@
 </nav>
   </nav>
 <div class="nav-mobile-menu" id="navMobileMenu">
+    <button class="nav-mobile-close" onclick="toggleMenu()">✕</button>
   <a href="#despre" onclick="toggleMenu()">Despre</a>
   <a href="#pachete" onclick="toggleMenu()">Pachete</a>
   <a href="#anvergura" onclick="toggleMenu()">Anvergura</a>
