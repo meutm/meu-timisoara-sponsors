@@ -2,6 +2,9 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo/MEU.png">
+<link rel="apple-touch-icon" href="logo/MEU.png">
+<meta name="theme-color" content="#001f6b">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Devino Partener - Model European Union Timișoara 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -339,45 +342,152 @@
   .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1; transform:none; }
 
-  @media(max-width:1100px) {
-    .packages-grid { grid-template-columns:1fr 1fr; }
-    .packages-grid .package-card:last-child { grid-column: span 2; }
-  }
+  /* ── TABLET LANDSCAPE (max 1200px) ── */
+@media(max-width:1200px) {
+  .packages-grid { grid-template-columns:1fr 1fr 1fr; gap:18px; }
+  .program-day { padding:32px 18px 28px; }
+  .program-day-num { font-size:56px; }
+}
 
-  @media(max-width:900px) {
-    .section { padding:70px 24px; }
-    .hero-stats { flex-wrap:wrap; }
-    .hero-stat { border-right:none; border-bottom:1px solid rgba(255,204,0,.1); }
-    .about-grid,.contact-grid { grid-template-columns:1fr; gap:40px; }
-    .about-visual { height:280px; }
-    .about-badge { display:none; }
-    .packages-grid { grid-template-columns:1fr; }
-    .packages-grid .package-card:last-child { grid-column: span 1; }
-    .package-exclusive { flex-direction:column; }
-    .visibility-grid { grid-template-columns:1fr 1fr; }
-    .program-grid { grid-template-columns:1fr 1fr; }
-    .program-grid::before { display:none; }
-    .program-day { border-right:none; border-bottom:1px solid rgba(255,204,0,0.08); }
-    .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
-    .gallery-item { height:200px; }
-    .gallery-item:first-child { grid-row:unset; }
-    .nav-links { display:none; }
-    .hero-nav { padding:16px 24px; }
-    .patronage-inner { flex-direction:column; text-align:center; }
-    .patronage-logos { justify-content:center; }
-    .footer-top { flex-direction:column; gap:24px; }
-    .form-row { grid-template-columns:1fr; }
-  }
-</style>
-</head>
-<body>
+/* ── TABLET (max 1024px) ── */
+@media(max-width:1024px) {
+  .section { padding:80px 40px; }
+  .hero-nav { padding:16px 36px; }
+  .packages-grid { grid-template-columns:1fr 1fr; gap:20px; }
+  .packages-grid .package-card:last-child { grid-column:span 1; }
+  .package-exclusive { padding:36px 36px; gap:32px; }
+  .excl-price { font-size:58px; }
+  .visibility-grid { grid-template-columns:1fr 1fr; gap:20px; }
+  .program-grid { grid-template-columns:repeat(5,1fr); gap:0; }
+  .about-grid { gap:48px; }
+  .contact-grid { gap:48px; }
+}
+
+/* ── TABLET PORTRAIT (max 900px) ── */
+@media(max-width:900px) {
+  .section { padding:64px 28px; }
+  .hero-nav { padding:14px 24px; }
+  .nav-links { display:none; }
+
+  /* Hero */
+  .hero-content { padding:120px 24px 48px; }
+  .hero-cta-group { flex-direction:column; align-items:center; gap:12px; }
+  .btn-primary, .btn-outline { width:100%; max-width:320px; text-align:center; }
+  .hero-stats { flex-wrap:wrap; }
+  .hero-stat { flex:1 1 45%; border-right:none; border-bottom:1px solid rgba(255,204,0,.1); }
+  .hero-stat:last-child { border-bottom:none; }
+
+  /* About */
+  .about-grid { grid-template-columns:1fr; gap:36px; }
+  .about-visual { height:260px; }
+  .about-badge { display:none; }
+  .about-pillars { grid-template-columns:1fr 1fr; }
+
+  /* Patronage */
+  .patronage-strip { padding:44px 28px; }
+  .patronage-inner { flex-direction:column; text-align:center; gap:28px; }
+  .patronage-logos { justify-content:center; }
+  .partner-logo-slot { width:130px; height:72px; }
+
+  /* Packages */
+  .packages-grid { grid-template-columns:1fr; gap:18px; }
+  .package-exclusive { flex-direction:column; text-align:center; padding:32px 28px; gap:28px; }
+  .package-exclusive::before { display:none; }
+  .excl-left p { max-width:100%; }
+
+  /* Visibility */
+  .visibility-grid { grid-template-columns:1fr 1fr; gap:16px; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; gap:10px; }
+  .gallery-item { height:180px; }
+  .gallery-item:first-child { grid-row:unset; grid-column:span 2; height:220px; }
+
+  /* Timeline/Program */
+  .program-grid { grid-template-columns:1fr 1fr; gap:0; }
+  .program-grid::before { display:none; }
+  .program-day { border-right:none; border-bottom:1px solid rgba(255,204,0,0.08); padding:28px 24px; }
+  .program-day:nth-child(odd) { border-right:1px solid rgba(255,204,0,0.08); }
+  .program-day:last-child { grid-column:span 2; border-right:none; }
+  .program-day-num { font-size:60px; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns:1fr; gap:48px; }
+  .form-row { grid-template-columns:1fr; }
+
+  /* Footer */
+  .footer { padding:40px 24px 24px; }
+  .footer-top { flex-direction:column; gap:20px; }
+  .footer-links { flex-wrap:wrap; gap:16px; }
+}
+
+/* ── MOBILE (max 600px) ── */
+@media(max-width:600px) {
+  .section { padding:52px 18px; }
+  .hero-nav { padding:12px 18px; }
+  .nav-logo-img { height:48px; }
+
+  /* Hero */
+  .hero-content { padding:100px 18px 36px; }
+  .hero-subtitle { font-size:15px; }
+  .hero-stat { flex:1 1 100%; }
+  .hero-stat-num { font-size:40px; }
+
+  /* About */
+  .about-pillars { grid-template-columns:1fr; }
+  .about-visual { height:220px; }
+
+  /* Patronage */
+  .patronage-text { font-size:20px; }
+  .patronage-logos { gap:10px; }
+  .partner-logo-slot { width:110px; height:60px; }
+
+  /* Packages */
+  .package-header { padding:22px 20px 18px; }
+  .package-body { padding:18px 20px 22px; }
+  .package-title { font-size:22px; }
+  .package-price { font-size:38px; }
+  .package-exclusive { padding:28px 20px; }
+  .excl-left h3 { font-size:28px; }
+  .excl-price { font-size:48px; }
+
+  /* Visibility */
+  .visibility-grid { grid-template-columns:1fr; gap:14px; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns:1fr; grid-template-rows:auto; }
+  .gallery-item { height:200px; }
+  .gallery-item:first-child { grid-column:unset; height:220px; }
+
+  /* Program */
+  .program-grid { grid-template-columns:1fr; }
+  .program-day { border-right:none !important; }
+  .program-day:last-child { grid-column:span 1; }
+  .program-day-num { font-size:52px; }
+
+  /* Contact */
+  .contact-person { flex-direction:column; text-align:center; gap:12px; }
+  .contact-avatar-img { margin:0 auto; }
+
+  /* Scroll top */
+  .scroll-top { bottom:20px; right:20px; width:40px; height:40px; }
+}
+
+/* ── MOBILE MIC (max 380px) ── */
+@media(max-width:380px) {
+  .section { padding:44px 14px; }
+  .hero-title { font-size:38px; }
+  .section-title { font-size:30px; }
+  .package-price { font-size:34px; }
+  .partner-logo-slot { width:90px; height:52px; }
+}
 
 <!-- ═══════════════════════════════════════
      NAV
 ═══════════════════════════════════════ -->
 <nav class="hero-nav">
   <div class="nav-logo">
-    <img class="nav-logo-img" src="logo/MEU.png" alt="MEU Timișoara">
+    <img class="nav-logo-img" src="logo/meu-for-sponsors.png" alt="MEU Timișoara">
   </div>
   <div class="nav-links">
     <a href="#despre">Despre</a>
