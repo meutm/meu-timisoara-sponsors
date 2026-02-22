@@ -489,20 +489,21 @@
   .partner-logo-slot { width:90px; height:52px; }
 }
 
-  .nav-hamburger { display:none; flex-direction:column; justify-content:space-between; width:28px; height:20px; background:none; border:none; cursor:pointer; padding:0; z-index:200; }
+.nav-hamburger { display:none; flex-direction:column; justify-content:space-between; width:28px; height:20px; background:none; border:none; cursor:pointer; padding:0; z-index:300; flex-shrink:0; }
 .nav-hamburger span { display:block; width:100%; height:2px; background:var(--white); border-radius:2px; transition:all .3s ease; }
 .nav-hamburger.open span:nth-child(1) { transform:translateY(9px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity:0; }
+.nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
 .nav-hamburger.open span:nth-child(3) { transform:translateY(-9px) rotate(-45deg); }
 
-.nav-mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,15,60,0.97); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+.nav-mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,15,60,0.97); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center; gap:44px; }
 .nav-mobile-menu.open { display:flex; animation:fadeUp .3s ease; }
-.nav-mobile-menu a { color:rgba(255,255,255,.75); text-decoration:none; font-size:22px; font-weight:500; letter-spacing:2px; text-transform:uppercase; transition:color .2s; font-family:'Cormorant Garamond',serif; }
+.nav-mobile-menu a { color:rgba(255,255,255,.75); text-decoration:none; font-size:28px; font-weight:400; letter-spacing:2px; text-transform:uppercase; transition:color .2s; font-family:'Cormorant Garamond',serif; }
 .nav-mobile-menu a:hover { color:var(--eu-gold); }
-.nav-mobile-menu .nav-cta-mobile { background:var(--eu-gold); color:var(--eu-blue-deep) !important; font-weight:700 !important; padding:14px 40px; border-radius:3px; font-family:'DM Sans',sans-serif; font-size:14px !important; letter-spacing:1px; }
+.nav-mobile-menu .nav-cta-mobile { background:var(--eu-gold); color:var(--eu-blue-deep) !important; font-weight:700; padding:14px 40px; border-radius:3px; font-family:'DM Sans',sans-serif !important; font-size:14px !important; letter-spacing:1px; margin-top:16px; }
 
 @media(max-width:900px) {
   .nav-hamburger { display:flex; }
+  .nav-links { display:none; }
 }
   
   </style>
@@ -581,7 +582,7 @@
     <div class="about-grid">
       <div class="about-visual">
         <div class="about-img-main">
-          <img src="logo/MEU.png" alt="Model European Union Timișoara 2026">
+          <img src="logo/poza-unirii.png" alt="Model European Union Timișoara 2026">
         </div>
         <div class="about-badge"><strong>2026</strong><span>Prima ediție</span></div>
       </div>
@@ -1164,9 +1165,11 @@
 <script>
 
 function toggleMenu() {
-  document.getElementById('navHamburger').classList.toggle('open');
-  document.getElementById('navMobileMenu').classList.toggle('open');
-  document.body.style.overflow = document.getElementById('navMobileMenu').classList.contains('open') ? 'hidden' : '';
+  const btn = document.getElementById('navHamburger');
+  const menu = document.getElementById('navMobileMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
   
   // Reveal on scroll
