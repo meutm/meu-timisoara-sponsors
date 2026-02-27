@@ -1229,6 +1229,28 @@ function toggleMenu() {
   });
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+
+<script>
+  (function () {
+    function removeSiennaCredit() {
+      const nodes = document.querySelectorAll("body *");
+      for (const n of nodes) {
+        const t = (n.textContent || "").trim();
+        if (t === "Web Accessibility By Sienna ❤️" || t.startsWith("Web Accessibility By Sienna")) {
+          n.remove();
+          return;
+        }
+      }
+    }
+
+    // încearcă imediat + când apar noduri noi
+    removeSiennaCredit();
+    new MutationObserver(removeSiennaCredit).observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  })();
+</script>
 </body>
 </html>
